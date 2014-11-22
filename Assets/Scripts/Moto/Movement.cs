@@ -3,27 +3,32 @@ using System.Collections;
 
 public class Movement : MonoBehaviour {
 
-	private float velocity = 2;
-	private Vector3 translation = Vector3.zero;
-
-	// Update is called once per frame
+	public int speed = 15;
+	// Use this for initialization
+	void Start () {
+	}
 	void Update () {
-		UpdateMovement ();
+		UpdateKeyboardMovement();
+		transform.Translate(Vector3.forward * (speed/10), transform);
 	}
-
-	private void UpdateMovement() {
-		UpdateVelocity ();
-		UpdateTranslation ();
-
-
-		gameObject.transform.Translate (translation);
+	void UpdateKeyboardMovement (){
+		if(Input.GetKeyDown(KeyCode.RightArrow))
+			transform.Rotate(Vector3.up*90);
+		if(Input.GetKeyDown(KeyCode.LeftArrow))
+			transform.Rotate(Vector3.down*90);
+		if(Input.GetKey(KeyCode.UpArrow))
+			speed = 20;
+		else if(Input.GetKey(KeyCode.DownArrow))
+			speed = 10;
+		else
+			speed = 15;
 	}
-	private void UpdateTranslation() {
-		translation.x = velocity;
-	}
-
-
-	private void UpdateVelocity() {
-		return;
+	void OnCollisionEnter (Collision col)
+	{
+		print ("toto");
+		if(col.gameObject.name.Contains("Wall"))
+		{
+			Destroy(gameObject);
+		}
 	}
 }
