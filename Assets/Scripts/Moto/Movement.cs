@@ -23,11 +23,12 @@ public class Movement : MonoBehaviour {
 		else
 			speed = 15;
 	}
+
 	void OnCollisionEnter (Collision col)
 	{
-		print ("toto");
 		if(col.gameObject.name.Contains("Wall"))
 		{
+			print("game over Wall");
 			Destroy(gameObject);
 		}
 	}
