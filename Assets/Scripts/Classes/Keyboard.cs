@@ -18,7 +18,7 @@ namespace AssemblyCSharp {
 		}
 
 		public override bool TurningLeft() { 
-			return Input.GetKeyDown (KeyCode.RightArrow);
+			return Input.GetKeyDown (KeyCode.LeftArrow);
 		}
 
 		public override bool Accelerating() { 
