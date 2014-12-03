@@ -19,13 +19,9 @@ public class Movement : MonoBehaviour {
 	void UpdateKeyboardMovement (){
 		if (controller.TurningRight ()) {
 			transform.Rotate (Vector3.up * 90);
-			transform.Translate(Vector3.forward, transform);
-			transform.Translate(Vector3.forward, transform);
 		}
 		if (controller.TurningLeft ()) {
 			transform.Rotate (Vector3.down * 90);
-			transform.Translate(Vector3.forward, transform);
-			transform.Translate(Vector3.forward, transform);
 		}
 		if(controller.Accelerating())
 			speed = 20F;

@@ -21,6 +21,7 @@ public class TrailRendererCollider : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!transform.eulerAngles.Equals(lastRotation)) {
+			transform.Translate(Vector3.forward * 2, transform);
 			lastRotation = transform.eulerAngles;
 			createNewTail(lastRotation);
 		} else {
