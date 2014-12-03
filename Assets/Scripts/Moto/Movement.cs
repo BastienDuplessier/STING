@@ -4,7 +4,7 @@ using AssemblyCSharp;
 
 public class Movement : MonoBehaviour {
 
-	public int speed = 15;
+	public float speed = 15F;
 	private Control controller;
 
 	void Start() {
@@ -13,26 +13,25 @@ public class Movement : MonoBehaviour {
 
 	void Update () {
 		UpdateKeyboardMovement();
-		transform.Translate(Vector3.forward * (speed/10), transform);
+		transform.Translate(Vector3.forward * (speed/10F), transform);
 	}
 
 	void UpdateKeyboardMovement (){
-		if(controller.TurningRight())
-			transform.Rotate(Vector3.up*90);
-		if(controller.TurningLeft())
-			transform.Rotate(Vector3.down*90);
-		if(controller.Accelerating())
-			speed = 20;
-		else if(controller.Slowing())
-			speed = 10;
-		else
-			speed = 15;
-	}
-	void OnCollisionEnter (Collision col)
-	{
-		if (col.gameObject.name.Contains ("Wall")) {
-			print ("game over Wall");
-			Destroy (gameObject);
+		if (controller.TurningRight ()) {
+			transform.Rotate (Vector3.up * 90);
+			transform.Translate(Vector3.forward, transform);
+			transform.Translate(Vector3.forward, transform);
 		}
+		if (controller.TurningLeft ()) {
+			transform.Rotate (Vector3.down * 90);
+			transform.Translate(Vector3.forward, transform);
+			transform.Translate(Vector3.forward, transform);
+		}
+		if(controller.Accelerating())
+			speed = 20F;
+		else if(controller.Slowing())
+			speed = 10F;
+		else
+			speed = 15F;
 	}
 }

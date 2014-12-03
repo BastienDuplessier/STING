@@ -22,11 +22,11 @@ namespace AssemblyCSharp {
 		}
 
 		public override bool Accelerating() { 
-			return Input.GetKeyDown (KeyCode.UpArrow);
+			return Input.GetKey(KeyCode.UpArrow);
 		}
 
 		public override bool Slowing() { 
-			return Input.GetKeyDown (KeyCode.DownArrow);
+			return Input.GetKey(KeyCode.DownArrow);
 		}
 	}
 

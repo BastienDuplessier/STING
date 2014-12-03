@@ -1,45 +1,71 @@
+using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 
 public class TrailRendererCollider : MonoBehaviour {
 	
 	public int time = 3600;
 	public float rate = 15.0F;
-	private Vector3 decalage;
+	private Vector3 lastPos;
+	private Vector3 lastRotation;
+	private Vector3 LastDecalage = new Vector3();
+	private Vector3 decalage = new Vector3();
+	List<GameObject> tail = new List<GameObject>();
 	
 	// Use this for initialization
 	void Start () {
-		StartCoroutine(DropTrailCollider());
+		lastPos = transform.position;
+		lastRotation = transform.eulerAngles;
+		createNewTail(lastRotation);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
-	
-	IEnumerator DropTrailCollider(){
-		while(true){
-			GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-			cube.name = "Tail";
-			cube.transform.localScale = new Vector3(0.1F,8F,3F);
-			if(transform.eulerAngles.y > 315F || transform.eulerAngles.y <= 45F)
-				decalage = new Vector3(0F,0F,-6F);
-			else if(transform.eulerAngles.y > 45F && transform.eulerAngles.y <= 135F)
-				decalage = new Vector3(-6F,0F,0F);
-			else if(transform.eulerAngles.y > 135F && transform.eulerAngles.y <= 225F)
-				decalage = new Vector3(0F,0F,6F);
-			else if(transform.eulerAngles.y > 225F && transform.eulerAngles.y <= 315F)
-				decalage = new Vector3(6F,0F,0F);
-			cube.transform.position = transform.position + decalage;
-			cube.transform.rotation = transform.rotation;
-			yield return new WaitForSeconds(1.0F / rate);
+		if (!transform.eulerAngles.Equals(lastRotation)) {
+			lastRotation = transform.eulerAngles;
+			createNewTail(lastRotation);
+		} else {
+			tail [tail.Count - 1].transform.localScale += (transform.position - lastPos);
+			tail [tail.Count - 1].transform.position += (transform.position - lastPos) / 2;
 		}
+		lastPos = transform.position;
 	}
+
+	void createNewTail(Vector3 rotation){
+		tail.Add(GameObject.CreatePrimitive(PrimitiveType.Cube));
+		if (tail.Count == 2) {
+			tail[tail.Count-2].transform.position -= decalage;
+		}
+		if (tail.Count >= 3) {
+			tail[tail.Count-2].transform.position -= (decalage / 2 );
+			tail[tail.Count-2].transform.localScale -= decalage;
+		}
+		if (rotation.y > 315F || rotation.y <= 45F) {
+			decalage = new Vector3 (0F, 0F, -3.1F);
+			LastDecalage = new Vector3 (0F, 0F, -0.4F);
+		} else if (rotation.y > 45F && rotation.y <= 135F) {
+			decalage = new Vector3 (-3.1F, 0F, 0F);
+			LastDecalage = new Vector3 (-0.4F, 0F, 0F);
+		} else if (rotation.y > 135F && rotation.y <= 225F) {
+			decalage = new Vector3 (0F, 0F, 3.1F);
+			LastDecalage = new Vector3 (0F, 0F, 0.4F);
+		} else if (rotation.y > 225F && rotation.y <= 315F) {
+			decalage = new Vector3 (3.1F, 0F, 0F);
+			LastDecalage = new Vector3 (0.4F, 0F, 0F);
+		}
+		tail[tail.Count-1].name = "Tail";
+		tail[tail.Count-1].transform.localScale = new Vector3(0.05F,3F,0.05F) - LastDecalage;
+		tail[tail.Count-1].transform.position = transform.position + decalage + (LastDecalage / 2 );
+		tail[tail.Count-1].GetComponent<MeshRenderer>().material.color = Color.red;
+	}
+
 	
 	void OnCollisionEnter (Collision col)
 	{
-		if(col.gameObject.name.Contains("Tail"))
+		if(col.gameObject.name.Contains("Tail") || col.gameObject.name.Contains("Wall"))
 		{
+			foreach(GameObject o in tail){
+				Destroy(o);
+			}
 			print("game over Tail");
 			Destroy(gameObject);
 		}
