@@ -8,12 +8,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 using System;
+using UnityEngine;
+
 namespace AssemblyCSharp
 {
 		public class IAControl : Control
 		{
-			public IAControl () {
-				
+			GameObject gameObject;
+
+			public IAControl (GameObject gameObject) {
+				this.gameObject = gameObject;
 			}
 		
 			public override bool TurningRight() {

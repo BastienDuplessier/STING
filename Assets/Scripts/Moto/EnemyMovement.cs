@@ -5,7 +5,7 @@ using AssemblyCSharp;
 public class EnemyMovement : Movement
 {
 	public override void DefineControlMethod() {
-		this.controller = new IAControl ();
+		this.controller = new IAControl (gameObject);
 	}
 }
 
