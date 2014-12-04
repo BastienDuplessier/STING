@@ -13,6 +13,8 @@ using UnityEngine;
 namespace AssemblyCSharp {
 	public class Keyboard : Control {
 
+		public Keyboard (Movement parent) : base (parent) {}
+
 		public override bool TurningRight() {
 			return Input.GetKeyDown (KeyCode.RightArrow); 
 		}

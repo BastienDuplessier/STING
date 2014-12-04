@@ -16,12 +16,13 @@ namespace AssemblyCSharp
 		GameObject gameObject;
 
 		// Decisions
-		bool goRight;
-		bool goLeft;
-		bool speedUp;
-		bool slowDown;
+		bool goRight = false;
+		bool goLeft = false;
+		bool speedUp = true;
+		bool slowDown = false;
 
-		public IAControl (GameObject gameObject) {
+		public IAControl (Movement parent, GameObject gameObject) : base (parent) {
+			this.parent = parent;
 			this.gameObject = gameObject;
 		}
 
@@ -41,11 +42,16 @@ namespace AssemblyCSharp
 			return slowDown;
 		}
 
-		public void UpdateDecision() {
-			goRight = false;
-			goLeft = false;
-			speedUp = true;
-			slowDown = false;
+		public override void Update() {
+			UpdateDecision(parent.speed);
+		}
+
+		public void UpdateDecision(float speed) {
+			var fwd = gameObject.transform.TransformDirection (Vector3.forward);
+			if (Physics.Raycast (gameObject.transform.position, fwd, speed * 3))
+					goRight = true;
+			else
+					goRight = false;
 		}
 	}
 }
