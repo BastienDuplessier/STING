@@ -41,22 +41,22 @@ public class TrailRendererCollider : MonoBehaviour {
 			tail[tail.Count-2].transform.localScale -= decalage;
 		}
 		if (rotation.y > 315F || rotation.y <= 45F) {
-			decalage = new Vector3 (0F, 0F, -3.1F);
+			decalage = new Vector3 (0F, -0.25F, -3.1F);
 			LastDecalage = new Vector3 (0F, 0F, -0.4F);
 		} else if (rotation.y > 45F && rotation.y <= 135F) {
-			decalage = new Vector3 (-3.1F, 0F, 0F);
+			decalage = new Vector3 (-3.1F, -0.25F, 0F);
 			LastDecalage = new Vector3 (-0.4F, 0F, 0F);
 		} else if (rotation.y > 135F && rotation.y <= 225F) {
-			decalage = new Vector3 (0F, 0F, 3.1F);
+			decalage = new Vector3 (0F, -0.25F, 3.1F);
 			LastDecalage = new Vector3 (0F, 0F, 0.4F);
 		} else if (rotation.y > 225F && rotation.y <= 315F) {
-			decalage = new Vector3 (3.1F, 0F, 0F);
+			decalage = new Vector3 (3.1F, -0.25F, 0F);
 			LastDecalage = new Vector3 (0.4F, 0F, 0F);
 		}
 		tail[tail.Count-1].name = "Tail";
-		tail[tail.Count-1].transform.localScale = new Vector3(0.05F,3F,0.05F) - LastDecalage;
+		tail[tail.Count-1].transform.localScale = new Vector3(0.05F,2.5F,0.05F) - LastDecalage;
 		tail[tail.Count-1].transform.position = transform.position + decalage + (LastDecalage / 2 );
-		tail[tail.Count-1].GetComponent<MeshRenderer>().material.color = Color.red;
+		tail[tail.Count-1].GetComponent<MeshRenderer>().material.color = Color.white;
 	}
 
 	
