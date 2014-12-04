@@ -7,20 +7,17 @@ public class Movement : MonoBehaviour {
 	public float speed = 15F;
 	protected Control controller;
 
-	void Start() {
+	public virtual void Start() {
 		DefineControlMethod ();
 	}
 
-	public virtual void DefineControlMethod() {
-		controller = new Keyboard ();
-	}
-
-	void Update () {
-		UpdateKeyboardMovement();
+	public virtual void Update () {
+		this.controller.Update();
+		this.UpdateMovement();
 		transform.Translate(Vector3.forward * (speed/10F), transform);
 	}
 
-	void UpdateKeyboardMovement (){
+	public void UpdateMovement (){
 		if (controller.TurningRight ()) {
 			transform.Rotate (Vector3.up * 90);
 		}
@@ -34,4 +31,9 @@ public class Movement : MonoBehaviour {
 		else
 			speed = 15F;
 	}
+	
+	public virtual void DefineControlMethod() {
+		controller = new Keyboard (this);
+	}
+
 }
