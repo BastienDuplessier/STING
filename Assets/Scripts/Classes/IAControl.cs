@@ -47,11 +47,15 @@ namespace AssemblyCSharp
 		}
 
 		public void UpdateDecision(float speed) {
+			goRight = false;
+			goLeft = false;
 			var fwd = gameObject.transform.TransformDirection (Vector3.forward);
-			if (Physics.Raycast (gameObject.transform.position, fwd, speed * 3))
-					goRight = true;
-			else
-					goRight = false;
+			var right = gameObject.transform.TransformDirection (Vector3.right);
+			var left = gameObject.transform.TransformDirection (Vector3.left);
+			if (Physics.Raycast (gameObject.transform.position, fwd, speed * 3)) {
+				bool canGoRight = Physics.Raycast (gameObject.transform.position, right, speed * 3);
+				bool canGoLeft = Physics.Raycast (gameObject.transform.position, left, speed * 3);
+			}
 		}
 	}
 }
