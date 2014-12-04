@@ -56,7 +56,7 @@ public class TrailRendererCollider : MonoBehaviour {
 		tail[tail.Count-1].name = "Tail";
 		tail[tail.Count-1].transform.localScale = new Vector3(0.05F,3F,0.05F) - LastDecalage;
 		tail[tail.Count-1].transform.position = transform.position + decalage + (LastDecalage / 2 );
-		tail[tail.Count-1].GetComponent<MeshRenderer>().material.color = Color.red;
+		tail[tail.Count-1].renderer.material = gameObject.renderer.material;
 	}
 
 	
