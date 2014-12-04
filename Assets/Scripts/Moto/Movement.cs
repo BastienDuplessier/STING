@@ -5,9 +5,13 @@ using AssemblyCSharp;
 public class Movement : MonoBehaviour {
 
 	public float speed = 15F;
-	private Control controller;
+	protected Control controller;
 
 	void Start() {
+		DefineControlMethod ();
+	}
+
+	public virtual void DefineControlMethod() {
 		controller = new Keyboard ();
 	}
 
