@@ -10,12 +10,20 @@
 using System;
 namespace AssemblyCSharp
 {
-		public abstract class Control
-		{		
-				public abstract bool TurningRight();
-				public abstract bool TurningLeft();
-				public abstract bool Accelerating();
-				public abstract bool Slowing();
+	public abstract class Control
+	{	
+		protected Movement parent;
+
+		public Control(Movement parent) {
+			this.parent = parent;
 		}
+
+		public abstract bool TurningRight();
+		public abstract bool TurningLeft();
+		public abstract bool Accelerating();
+		public abstract bool Slowing();
+
+		public virtual void Update() {}
+	}
 }
 
