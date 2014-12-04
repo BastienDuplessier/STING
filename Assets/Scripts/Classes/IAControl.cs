@@ -12,28 +12,40 @@ using UnityEngine;
 
 namespace AssemblyCSharp
 {
-		public class IAControl : Control
-		{
-			GameObject gameObject;
+	public class IAControl : Control {
+		GameObject gameObject;
 
-			public IAControl (GameObject gameObject) {
-				this.gameObject = gameObject;
-			}
-		
-			public override bool TurningRight() {
-				return false;
-			}
-			
-			public override bool TurningLeft() { 
-				return false;
-			}
-			
-			public override bool Accelerating() { 
-				return true;
-			}
-			
-			public override bool Slowing() { 
-				return false;
-			}
+		// Decisions
+		bool goRight;
+		bool goLeft;
+		bool speedUp;
+		bool slowDown;
+
+		public IAControl (GameObject gameObject) {
+			this.gameObject = gameObject;
 		}
+
+		public override bool TurningRight() {
+			return goRight;
+		}
+
+		public override bool TurningLeft() {
+			return goLeft;
+		}
+
+		public override bool Accelerating() {
+			return speedUp;
+		}
+
+		public override bool Slowing() {
+			return slowDown;
+		}
+
+		public void UpdateDecision() {
+			goRight = false;
+			goLeft = false;
+			speedUp = true;
+			slowDown = false;
+		}
+	}
 }
