@@ -57,10 +57,10 @@ namespace AssemblyCSharp
 				bool canGoLeft = !Physics.Raycast (gameObject.transform.position, left, speed);
 
 				if(canGoLeft && canGoRight) {
-					int rand = (new System.Random()).Next(0, 1);
-					if(rand > 0)
+					int rand = (new System.Random()).Next(0, 30);
+					if(rand < 10)
 						goLeft = true;
-					else
+					else if (rand > 20)
 						goRight = true;
 				} else if (canGoLeft) {
 					goLeft = true;
