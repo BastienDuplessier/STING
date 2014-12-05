@@ -18,18 +18,18 @@ public class Movement : MonoBehaviour {
 	}
 
 	public void UpdateMovement (){
+		speed = 15F;
 		if (controller.TurningRight ()) {
 			transform.Rotate (Vector3.up * 90);
-		}
-		if (controller.TurningLeft ()) {
+		} 
+		else if (controller.TurningLeft ()) {
 			transform.Rotate (Vector3.down * 90);
 		}
-		if(controller.Accelerating())
+		else if(controller.Accelerating())
 			speed = 20F;
 		else if(controller.Slowing())
 			speed = 10F;
-		else
-			speed = 15F;
+
 	}
 	
 	public virtual void DefineControlMethod() {
