@@ -52,9 +52,22 @@ namespace AssemblyCSharp
 			var fwd = gameObject.transform.TransformDirection (Vector3.forward);
 			var right = gameObject.transform.TransformDirection (Vector3.right);
 			var left = gameObject.transform.TransformDirection (Vector3.left);
-			if (Physics.Raycast (gameObject.transform.position, fwd, speed * 3)) {
-				bool canGoRight = Physics.Raycast (gameObject.transform.position, right, speed * 3);
-				bool canGoLeft = Physics.Raycast (gameObject.transform.position, left, speed * 3);
+			if (Physics.Raycast (gameObject.transform.position, fwd, speed * 1.5F)) {
+				bool canGoRight = !Physics.Raycast (gameObject.transform.position, right, speed);
+				bool canGoLeft = !Physics.Raycast (gameObject.transform.position, left, speed);
+
+				if(canGoLeft && canGoRight) {
+					int rand = (new System.Random()).Next(0, 1);
+					if(rand > 0)
+						goLeft = true;
+					else
+						goRight = true;
+				} else if (canGoLeft) {
+					goLeft = true;
+				} else if (canGoRight) {
+					goRight = true;
+				}
+
 			}
 		}
 	}
