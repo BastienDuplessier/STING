@@ -34,7 +34,9 @@ public class SmoothTrailRendererCollider : MonoBehaviour
 	}
 	
 	void GameOver(Collider collider){
-		print("game over " + collider.name);
-		Destroy(collider.gameObject);
+		if (collider.tag.Equals ("Player")) {
+			print ("game over " + collider.name);
+			Destroy (collider.gameObject);
+		}
 	}
 }
