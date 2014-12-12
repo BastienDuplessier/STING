@@ -13,14 +13,14 @@ public class TrailRendererCollider : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		lastPos = transform.position;
+		/*lastPos = transform.position;
 		lastRotation = transform.eulerAngles;
-		createNewTail(lastRotation);
+		createNewTail(lastRotation);*/
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!transform.eulerAngles.Equals(lastRotation)) {
+		/*if (!transform.eulerAngles.Equals(lastRotation)) {
 			transform.Translate(Vector3.forward * 2, transform);
 			lastRotation = transform.eulerAngles;
 			createNewTail(lastRotation);
@@ -28,7 +28,7 @@ public class TrailRendererCollider : MonoBehaviour {
 			tail [tail.Count - 1].transform.localScale += (transform.position - lastPos);
 			tail [tail.Count - 1].transform.position += (transform.position - lastPos) / 2;
 		}
-		lastPos = transform.position;
+		lastPos = transform.position;*/
 	}
 
 	void createNewTail(Vector3 rotation){

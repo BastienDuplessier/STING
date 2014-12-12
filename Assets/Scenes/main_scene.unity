@@ -231,7 +231,7 @@ GameObject:
   - 23: {fileID: 147187772}
   - 114: {fileID: 147187771}
   - 54: {fileID: 147187770}
-  - 114: {fileID: 147187769}
+  - 96: {fileID: 147187769}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -239,20 +239,47 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &147187769
-MonoBehaviour:
+--- !u!96 &147187769
+TrailRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: 44ab54b1c1c6fe243be7df3dae352358,
-    type: 2}
-  m_PrefabInternal: {fileID: 637240123}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 147187768}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2948c68e03d780c49b51c7fd984d39bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 3600
-  rate: 15
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 9780ac24efe23e0429b129a1e6a8a226, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Time: 5
+  m_StartWidth: 1
+  m_EndWidth: 1
+  m_Colors:
+    m_Color[0]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[1]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[2]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[3]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[4]:
+      serializedVersion: 2
+      rgba: 16777215
+  m_MinVertexDistance: .100000001
+  m_Autodestruct: 0
 --- !u!54 &147187770
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -421,7 +448,7 @@ GameObject:
   - 23: {fileID: 287127524}
   - 114: {fileID: 287127523}
   - 54: {fileID: 287127522}
-  - 114: {fileID: 287127521}
+  - 96: {fileID: 287127521}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -429,20 +456,47 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &287127521
-MonoBehaviour:
+--- !u!96 &287127521
+TrailRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: 44ab54b1c1c6fe243be7df3dae352358,
-    type: 2}
-  m_PrefabInternal: {fileID: 2026324251}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 287127520}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2948c68e03d780c49b51c7fd984d39bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 3600
-  rate: 15
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 9780ac24efe23e0429b129a1e6a8a226, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Time: 5
+  m_StartWidth: 1
+  m_EndWidth: 1
+  m_Colors:
+    m_Color[0]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[1]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[2]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[3]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[4]:
+      serializedVersion: 2
+      rgba: 16777215
+  m_MinVertexDistance: .100000001
+  m_Autodestruct: 0
 --- !u!54 &287127522
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -714,7 +768,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400002, guid: 44ab54b1c1c6fe243be7df3dae352358, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 44ab54b1c1c6fe243be7df3dae352358, type: 2}
   m_RootGameObject: {fileID: 147187768}
   m_IsPrefabParent: 0
@@ -732,8 +787,8 @@ GameObject:
   - 23: {fileID: 1102923997}
   - 114: {fileID: 1102924000}
   - 54: {fileID: 1102924001}
-  - 114: {fileID: 1102924002}
   - 82: {fileID: 1102924003}
+  - 96: {fileID: 1102924002}
   m_Layer: 0
   m_Name: Moto
   m_TagString: Untagged
@@ -825,20 +880,47 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1102924002
-MonoBehaviour:
+--- !u!96 &1102924002
+TrailRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: 1f9196e180b0d714581b6ac9e6fc1900,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1102923995}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2948c68e03d780c49b51c7fd984d39bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 3600
-  rate: 15
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: d07a2cbd0b1d1324f8960b04b4b9aedc, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Time: Infinity
+  m_StartWidth: 3
+  m_EndWidth: 3
+  m_Colors:
+    m_Color[0]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[1]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[2]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[3]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[4]:
+      serializedVersion: 2
+      rgba: 16777215
+  m_MinVertexDistance: 1
+  m_Autodestruct: 0
 --- !u!82 &1102924003
 AudioSource:
   m_ObjectHideFlags: 0
@@ -937,7 +1019,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400002, guid: 44ab54b1c1c6fe243be7df3dae352358, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 44ab54b1c1c6fe243be7df3dae352358, type: 2}
   m_RootGameObject: {fileID: 1910390848}
   m_IsPrefabParent: 0
@@ -1188,7 +1271,7 @@ GameObject:
   - 23: {fileID: 1910390852}
   - 114: {fileID: 1910390851}
   - 54: {fileID: 1910390850}
-  - 114: {fileID: 1910390849}
+  - 96: {fileID: 1910390849}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1196,20 +1279,47 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1910390849
-MonoBehaviour:
+--- !u!96 &1910390849
+TrailRenderer:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: 44ab54b1c1c6fe243be7df3dae352358,
-    type: 2}
-  m_PrefabInternal: {fileID: 1253397185}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1910390848}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2948c68e03d780c49b51c7fd984d39bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 3600
-  rate: 15
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 9780ac24efe23e0429b129a1e6a8a226, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Time: 5
+  m_StartWidth: 1
+  m_EndWidth: 1
+  m_Colors:
+    m_Color[0]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[1]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[2]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[3]:
+      serializedVersion: 2
+      rgba: 4294967295
+    m_Color[4]:
+      serializedVersion: 2
+      rgba: 16777215
+  m_MinVertexDistance: .100000001
+  m_Autodestruct: 0
 --- !u!54 &1910390850
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1332,7 +1442,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400002, guid: 44ab54b1c1c6fe243be7df3dae352358, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 44ab54b1c1c6fe243be7df3dae352358, type: 2}
   m_RootGameObject: {fileID: 287127520}
   m_IsPrefabParent: 0

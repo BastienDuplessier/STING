@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour {
 
 	public virtual void Start() {
 		DefineControlMethod ();
+		this.gameObject.AddComponent("SmoothTrailRendererCollider");
 	}
 
 	public virtual void Update () {
@@ -20,14 +21,14 @@ public class Movement : MonoBehaviour {
 	public void UpdateMovement (){
 		speed = 15F;
 		if (controller.TurningRight ()) {
-			transform.Rotate (Vector3.up * 90);
+			transform.Rotate (Vector3.up * (speed * 0.1F));
 		} 
-		else if (controller.TurningLeft ()) {
-			transform.Rotate (Vector3.down * 90);
+		if (controller.TurningLeft ()) {
+			transform.Rotate (Vector3.down * (speed * 0.1F));
 		}
-		else if(controller.Accelerating())
+		if(controller.Accelerating())
 			speed = 20F;
-		else if(controller.Slowing())
+		if(controller.Slowing())
 			speed = 10F;
 
 	}
