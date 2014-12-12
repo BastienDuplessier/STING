@@ -16,11 +16,11 @@ namespace AssemblyCSharp {
 		public Keyboard (Movement parent) : base (parent) {}
 
 		public override bool TurningRight() {
-			return Input.GetKeyDown (KeyCode.RightArrow); 
+			return Input.GetKey(KeyCode.RightArrow); 
 		}
 
 		public override bool TurningLeft() { 
-			return Input.GetKeyDown (KeyCode.LeftArrow);
+			return Input.GetKey(KeyCode.LeftArrow);
 		}
 
 		public override bool Accelerating() { 
