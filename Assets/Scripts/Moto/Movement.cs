@@ -5,9 +5,9 @@ using AssemblyCSharp;
 public class Movement : MonoBehaviour {
 
 	// Acceleration factors
-	protected float minSpeed = 15F;
-	protected float maxSpeed = 100F;
-	protected float lifting = 0.1F; // Smooth the acceleration. 0 > lifting > 1
+	protected float minSpeed = 30F;
+    protected float maxSpeed = 60F;
+	protected float lifting = 0.01F; // Smooth the acceleration. 0 > lifting > 1
 	protected float const_a; // Needed, don't touch.
 	protected int frame_count;
 
@@ -25,7 +25,7 @@ public class Movement : MonoBehaviour {
 	public virtual void Update () {
 		this.controller.Update();
 		this.UpdateMovement();
-		transform.Translate(Vector3.forward * (speed/10F), transform);
+		this.gameObject.rigidbody.MovePosition ((this.transform.forward * speed) * 0.1F + this.gameObject.rigidbody.position);
 	}
 
 	public void UpdateMovement (){
@@ -41,13 +41,13 @@ public class Movement : MonoBehaviour {
 		} else {
 			frame_count = 0;
 			if(controller.Slowing())
-				this.speed = Mathf.Max(this.speed - 1F, this.minSpeed);
+				this.speed = Mathf.Max(this.speed - 5F, this.minSpeed);
 			else
-				this.speed = Mathf.Max(this.speed - 0.5F, this.minSpeed);
+				this.speed = Mathf.Max(this.speed - 1F, this.minSpeed);
 		}
 
 	}
-	
+
 	public virtual void DefineControlMethod() {
 		controller = new Keyboard (this);
 	}
