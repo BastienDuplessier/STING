@@ -1,42 +1,47 @@
-using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
+using UnityEngine;
 
-public class SmoothTrailRendererCollider : MonoBehaviour
-{
-	List<Vector3> tail = new List<Vector3>();
-	RaycastHit hit;
+public class SmoothTrailRendererCollider : MonoBehaviour {
 	
-    void Start(){
+	public int time = 3600;
+	public float rate = 15.0F;
+	private Vector3 lastPos;
+	private Vector3 lastRotation;
+	private Vector3 decalage = new Vector3();
+	List<GameObject> tail = new List<GameObject>();
+	
+	void Start () {
+		StartCoroutine(createNewTail());
+	}
+	
+	// Update is called once per frame
+	void Update () {
 		
-    }
-	
-    void Update(){
-		tail.Add(this.transform.position);
-		TestHit();
-    }
-	
-	void TestHit(){
-		int i = tail.Count;
-		while (i > 1) {
-			if (Physics.Linecast(tail[i-1], tail[i-2], out hit)){
-				GameOver(hit.collider);
-			}
-			i--;
+	}
+
+	IEnumerator createNewTail(){
+		while(true){
+			tail.Add(GameObject.CreatePrimitive(PrimitiveType.Cube));
+			tail[tail.Count-1].name = "Tail";
+			tail[tail.Count-1].transform.localScale = new Vector3(0.05F,2.5F,2F);
+			tail[tail.Count-1].transform.rotation = transform.rotation;
+			tail[tail.Count-1].transform.position = transform.position - (transform.forward*5);
+			tail[tail.Count-1].renderer.enabled = false;
+			yield return new WaitForSeconds(0.0001F);
 		}
 	}
+
 	
 	void OnCollisionEnter (Collision col)
 	{
-		if(col.gameObject.name.Contains("Wall"))
+		if(col.gameObject.name.Contains("Tail") || col.gameObject.name.Contains("Wall"))
 		{
-			GameOver(this.collider);
-		}
-	}
-	
-	void GameOver(Collider collider){
-		if (collider.tag.Equals ("Player")) {
-			print ("game over " + collider.name);
-			Destroy (collider.gameObject);
+			foreach(GameObject o in tail){
+				Destroy(o);
+			}
+			print("game over Tail");
+			Destroy(gameObject);
 		}
 	}
 }
