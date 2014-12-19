@@ -43,7 +43,7 @@ public class Movement : MonoBehaviour {
 			if(controller.Slowing())
 				this.speed = Mathf.Max(this.speed - 5F, this.minSpeed);
 			else
-				this.speed = Mathf.Max(this.speed - 1F, this.minSpeed);
+				this.speed = Mathf.Max(this.speed - 0.5F, this.minSpeed);
 		}
 
 	}
