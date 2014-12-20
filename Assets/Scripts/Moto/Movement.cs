@@ -9,10 +9,8 @@ public class Movement : MonoBehaviour {
     protected float maxSpeed = 60F;
 	protected float lifting = 0.01F; // Smooth the acceleration. 0 > lifting > 1
 	protected float const_a; // Needed, don't touch.
+
 	protected int frame_count;
-	// Field of view
-	protected float baseFoV = 60F;
-	protected float maxFoV = 130F;
 	public float speed;
 	protected Control controller;
 
@@ -28,14 +26,6 @@ public class Movement : MonoBehaviour {
 		this.controller.Update();
 		this.UpdateMovement();
 		this.gameObject.rigidbody.MovePosition ((this.transform.forward * speed) * 0.1F + this.gameObject.rigidbody.position);
-		this.UpdateFieldOfView ();
-	}
-
-	public void UpdateFieldOfView () {
-		float newFieldOfView = this.baseFoV;
-		float rate = (this.speed - this.minSpeed) / this.const_a;
-		newFieldOfView += (this.maxFoV - this.baseFoV) * rate;
-		Camera.main.fieldOfView = newFieldOfView;
 	}
 
 	public void UpdateMovement (){
