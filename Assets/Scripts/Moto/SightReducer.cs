@@ -4,8 +4,8 @@ using System.Collections;
 public class SightReducer : MonoBehaviour {
 
 	private RectTransform rTransform;
-	private float baseScaleX = 4F;
-	private float minScaleX = 0.4F;
+	private float baseScaleX = 2F;
+	private float minScaleX = 0.08F;
 	private float rangeX;
 	
 	// Use this for initialization
