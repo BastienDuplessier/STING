@@ -5,7 +5,7 @@ public class SightReducer : MonoBehaviour {
 
 	private RectTransform rTransform;
 	private float baseScaleX = 4F;
-	private float minScaleX = 0.5F;
+	private float minScaleX = 0.4F;
 	private float rangeX;
 	
 	// Use this for initialization
