@@ -14,16 +14,36 @@ namespace AssemblyCSharp
 {
 	public class IAControl : Control {
 		GameObject gameObject;
+		float maxSpeed;
+
+		// Debug variables
+		bool isDebug = false; // Show the lines
+		Color hit = Color.red;
+		Color clean = Color.green;
 
 		// Decisions
-		bool goRight = false;
-		bool goLeft = false;
-		bool speedUp = false;
-		bool slowDown = false;
+		private bool goRight = false;
+		private bool goLeft = false;
+		private bool speedUp = false;
+		private bool slowDown = false;
 
-		public IAControl (Movement parent, GameObject gameObject) : base (parent) {
+		// Go there while there is danger
+		private bool generalGoRight = false;
+		private bool generalGoLeft = false;
+
+		// Temp variables
+		private Vector3 fwd;
+		private Vector3 right;
+		private Vector3 left;
+		private bool fwdRay;
+		private bool rightRay;
+		private bool leftRay;
+
+
+		public IAControl (Movement parent, GameObject gameObject, float maxSpeed) : base (parent) {
 			this.parent = parent;
 			this.gameObject = gameObject;
+			this.maxSpeed = maxSpeed;
 		}
 
 		public override bool TurningRight() {
@@ -43,32 +63,66 @@ namespace AssemblyCSharp
 		}
 
 		public override void Update() {
-			UpdateDecision(parent.speed);
+			if(this.isDebug)
+				this.UpdateDebug ();
+			UpdateDecision();
 		}
 
-		public void UpdateDecision(float speed) {
-			goRight = false;
-			goLeft = false;
-			var fwd = gameObject.transform.TransformDirection (Vector3.forward);
-			var right = gameObject.transform.TransformDirection (Vector3.right);
-			var left = gameObject.transform.TransformDirection (Vector3.left);
-			if (Physics.Raycast (gameObject.transform.position, fwd, speed * 1.5F)) {
-				bool canGoRight = !Physics.Raycast (gameObject.transform.position, right, speed);
-				bool canGoLeft = !Physics.Raycast (gameObject.transform.position, left, speed);
+		public void UpdateDecision() {
+			goRight = generalGoRight;
+			goLeft = generalGoLeft;
+			speedUp = true;
+			slowDown = false;
 
-				if(canGoLeft && canGoRight) {
-					int rand = (new System.Random()).Next(0, 30);
-					if(rand < 10)
-						goLeft = true;
-					else if (rand > 20)
-						goRight = true;
-				} else if (canGoLeft) {
-					goLeft = true;
-				} else if (canGoRight) {
-					goRight = true;
+			fwd = gameObject.transform.TransformDirection (Vector3.forward);
+			right = gameObject.transform.TransformDirection (Vector3.right);
+			left = gameObject.transform.TransformDirection (Vector3.left);
+
+			fwdRay = Physics.Raycast (gameObject.transform.position + fwd*4, fwd, maxSpeed*5);
+			rightRay = Physics.Raycast (gameObject.transform.position + right*2, right, maxSpeed*5);
+			leftRay = Physics.Raycast (gameObject.transform.position + left*2, left, maxSpeed*5);
+
+			if (fwdRay) {
+				bool canGoRight = !rightRay;
+				bool canGoLeft = !leftRay;
+
+				speedUp = false;
+				slowDown = true;
+
+				if(!this.GeneralDirectionSet()) {
+					if (canGoLeft && canGoRight) {
+						int rand = (new System.Random ()).Next (0, 30);
+						if (rand < 10)
+							generalGoLeft = true;
+						else if (rand > 20)
+							generalGoRight = true;
+						else if (canGoLeft)
+								generalGoLeft = true;
+						else if (canGoRight)
+								generalGoRight = true;
+					}
 				}
-
-			}
+			} else if (rightRay)
+					generalGoLeft = true;
+			else if (leftRay)
+				generalGoRight = true;
+			else
+				this.ResetDirections();
 		}
+
+		private void UpdateDebug() {			
+			Debug.DrawRay (gameObject.transform.position + fwd * 4, fwd * maxSpeed * 5, fwdRay ? this.hit : this.clean);
+			Debug.DrawRay (gameObject.transform.position + right * 2, right * maxSpeed * 5, rightRay ? this.hit : this.clean);
+			Debug.DrawRay (gameObject.transform.position + left * 2, left * maxSpeed * 5, leftRay ? this.hit : this.clean);
+		}
+	
+		private void ResetDirections() {
+			generalGoLeft = generalGoRight = goRight = goLeft = false;
+		}
+
+		private bool GeneralDirectionSet() {
+			return generalGoLeft || generalGoRight;
+		}
+
 	}
 }
