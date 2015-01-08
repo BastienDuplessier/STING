@@ -25,7 +25,6 @@ public class Movement : MonoBehaviour {
 	}
 
 	public virtual void Update () {
-		this.controller.Update();
 		this.UpdateMovement();
 		this.gameObject.rigidbody.MovePosition ((this.transform.forward * speed) * 0.1F + this.gameObject.rigidbody.position);
 	}
@@ -44,7 +43,6 @@ public class Movement : MonoBehaviour {
 			else
 				this.speed = Mathf.Max(this.speed - 0.5F, this.minSpeed);
 			this.frame_count = ComputeFrameCount(this.speed);
-
 		}
 
 	}
