@@ -26,6 +26,7 @@ namespace AssemblyCSharp
 		private bool goLeft = false;
 		private bool speedUp = false;
 		private bool slowDown = false;
+		private bool isTooFast = false;
 
 		// Go there while there is danger
 		private bool generalGoRight = false;
@@ -68,10 +69,18 @@ namespace AssemblyCSharp
 			UpdateDecision();
 		}
 
+		public void TooFast() {
+			this.isTooFast = true;
+		}
+
+		public void SpeedIsOk() {
+			this.isTooFast = false;
+		}
+
 		public void UpdateDecision() {
 			goRight = generalGoRight;
 			goLeft = generalGoLeft;
-			speedUp = true;
+			speedUp = !isTooFast;
 			slowDown = false;
 
 			fwd = gameObject.transform.TransformDirection (Vector3.forward);
