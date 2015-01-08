@@ -8,7 +8,6 @@ public class SmoothTrailRendererCollider : MonoBehaviour {
 	public float rate = 15.0F;
 	private Vector3 lastPos;
 	private Vector3 lastRotation;
-	private Vector3 decalage = new Vector3();
 	List<GameObject> tail = new List<GameObject>();
 	
 	void Start () {
@@ -35,7 +34,7 @@ public class SmoothTrailRendererCollider : MonoBehaviour {
 	
 	void OnCollisionEnter (Collision col)
 	{
-		if(col.gameObject.name.Contains("Tail") || col.gameObject.name.Contains("Wall"))
+		if(col.gameObject.name.Contains("Tail") || col.gameObject.name.Contains("Wall") || col.gameObject.name.Contains("Enemy") || col.gameObject.name.Contains("Moto"))
 		{
 			foreach(GameObject o in tail){
 				Destroy(o);

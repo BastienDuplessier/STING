@@ -33,4 +33,8 @@ public class PlayerMovement : Movement {
 		float rate = (this.speed - this.minSpeed) / this.const_a;
 		this.hideLeft.UpdateHiding (rate);
 	}
+
+	void OnDestroy() {
+		Application.LoadLevel ("title_scene");
+	}
 }

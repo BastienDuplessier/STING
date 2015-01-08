@@ -18,7 +18,7 @@ namespace AssemblyCSharp
 		// Decisions
 		bool goRight = false;
 		bool goLeft = false;
-		bool speedUp = true;
+		bool speedUp = false;
 		bool slowDown = false;
 
 		public IAControl (Movement parent, GameObject gameObject) : base (parent) {

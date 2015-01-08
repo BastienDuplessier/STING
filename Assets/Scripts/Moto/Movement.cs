@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour {
     protected float maxSpeed = 60F;
 	protected float lifting = 0.05F; // Smooth the acceleration. 0 > lifting > 1
 	protected float const_a; // Needed, don't touch.
+	public bool collide = true;
 
 	protected int frame_count;
 	public float speed;
@@ -16,7 +17,8 @@ public class Movement : MonoBehaviour {
 
 	public virtual void Start() {
 		DefineControlMethod ();
-		this.gameObject.AddComponent("SmoothTrailRendererCollider");
+		if(collider)
+			this.gameObject.AddComponent("SmoothTrailRendererCollider");
 		this.frame_count = 0;
 		this.speed = this.minSpeed;
     	this.const_a = maxSpeed - minSpeed;
