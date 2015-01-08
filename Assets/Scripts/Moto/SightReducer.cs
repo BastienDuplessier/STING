@@ -18,4 +18,12 @@ public class SightReducer : MonoBehaviour {
 		float newScaleX = this.baseScaleX - (rate * this.rangeX);
 		rTransform.localScale = new Vector3 (newScaleX, 1F, 1F);
 	}
+	
+	public void ShowSight() {
+		gameObject.SetActive (true);
+	}
+
+	public void HideSight() {
+		gameObject.SetActive (false);
+	}
 }
