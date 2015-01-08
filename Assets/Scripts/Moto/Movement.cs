@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour {
 
 	// Acceleration factors
 	protected float minSpeed = 30F;
-    protected float maxSpeed = 80F;
+    protected float maxSpeed = 60F;
 	protected float lifting = 0.05F; // Smooth the acceleration. 0 > lifting > 1
 	protected float const_a; // Needed, don't touch.
 	public bool collide = true;
