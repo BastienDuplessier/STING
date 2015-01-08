@@ -6,8 +6,8 @@ public class Movement : MonoBehaviour {
 
 	// Acceleration factors
 	protected float minSpeed = 30F;
-    protected float maxSpeed = 90F;
-	protected float lifting = 0.1F; // Smooth the acceleration. 0 > lifting > 1
+    protected float maxSpeed = 80F;
+	protected float lifting = 0.05F; // Smooth the acceleration. 0 > lifting > 1
 	protected float const_a; // Needed, don't touch.
 	public bool collide = true;
 
@@ -40,7 +40,7 @@ public class Movement : MonoBehaviour {
 			this.frame_count += 1;
 		} else {
 			if(controller.Slowing())
-				this.speed = Mathf.Max(this.speed - 5F, this.minSpeed);
+				this.speed = Mathf.Max(this.speed - 2F, this.minSpeed);
 			else
 				this.speed = Mathf.Max(this.speed - 0.5F, this.minSpeed);
 			this.frame_count = ComputeFrameCount(this.speed);
