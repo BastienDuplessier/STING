@@ -23,7 +23,7 @@ public class SmoothTrailRendererCollider : MonoBehaviour {
 	IEnumerator createNewTail(){
 		while(true){
 			tail.Add(GameObject.CreatePrimitive(PrimitiveType.Cube));
-			tail[tail.Count-1].name = "Tail";
+			tail[tail.Count-1].name = "Tail" + this.gameObject.name;
 			tail[tail.Count-1].transform.localScale = new Vector3(0.05F,2.5F,2F);
 			tail[tail.Count-1].transform.rotation = transform.rotation;
 			tail[tail.Count-1].transform.position = transform.position - (transform.forward*5);

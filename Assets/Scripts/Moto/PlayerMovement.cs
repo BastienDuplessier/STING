@@ -5,7 +5,7 @@ public class PlayerMovement : Movement {
 	
 	// Field of view
 	protected float baseFoV = 60F;
-	protected float maxFoV = 130F;
+	protected float maxFoV = 80F;
 	// Sight reducers
 	private SightReducer hideLeft;
 	private GameObject hideRight;
