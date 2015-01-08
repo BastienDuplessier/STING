@@ -20,6 +20,15 @@ public class PlayerMovement : Movement {
 		base.Update ();
 		this.UpdateFieldOfView ();
 		this.UpdateSightReducing ();
+		
+		// Rotate camera
+		Vector3 rotation = Vector3.zero;
+		if(Input.GetKey(KeyCode.Q))
+			rotation.y = -1F;
+		else if(Input.GetKey(KeyCode.D))
+			rotation.y = 1F;
+		Camera.main.transform.Rotate (rotation);
+
 	}
 	
 	private void UpdateFieldOfView () {

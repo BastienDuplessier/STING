@@ -49,6 +49,7 @@ public class SmoothTrailRendererCollider : MonoBehaviour {
 				Destroy(o);
 			}
 			print("game over Tail");
+			this.SendMessageUpwards("Death");
 			Destroy(gameObject);
 		}
 	}
