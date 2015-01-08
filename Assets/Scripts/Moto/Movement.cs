@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour {
 	protected float lifting = 0.1F; // Smooth the acceleration. 0 > lifting > 1
 	protected float const_a; // Needed, don't touch.
 
-	public int frame_count;
+	protected int frame_count;
 	public float speed;
 	protected Control controller;
 
@@ -29,21 +29,20 @@ public class Movement : MonoBehaviour {
 	}
 
 	public void UpdateMovement (){
-		if (controller.TurningRight ()) {
+		if (controller.TurningRight ())
 			transform.Rotate (Vector3.up * (speed * 0.1F));
-		} 
-		if (controller.TurningLeft ()) {
+		if (controller.TurningLeft ())
 			transform.Rotate (Vector3.down * (speed * 0.1F));
-		}
 		if (controller.Accelerating ()) {
-			this.speed = acceleration (frame_count);
-			frame_count += 1;
+			this.speed = Acceleration (this.frame_count);
+			this.frame_count += 1;
 		} else {
-			frame_count = 0;
 			if(controller.Slowing())
 				this.speed = Mathf.Max(this.speed - 5F, this.minSpeed);
 			else
 				this.speed = Mathf.Max(this.speed - 0.5F, this.minSpeed);
+			this.frame_count = ComputeFrameCount(this.speed);
+
 		}
 
 	}
@@ -52,8 +51,14 @@ public class Movement : MonoBehaviour {
 		controller = new Keyboard (this);
 	}
 
-	private float acceleration(int x) {
+	private float Acceleration(int x) {
 		return (-this.const_a) * Mathf.Exp (-this.lifting * x) + this.maxSpeed;
+	}
+
+	// Acceleration reciprocate (ComputeFrameCount(Acceleration(x)) == x)
+	private int ComputeFrameCount(float speed) {
+		float result = (Mathf.Log ((speed - this.maxSpeed) / -this.const_a)) / -this.lifting;
+		return Mathf.FloorToInt(result);
 	}
 
 }
