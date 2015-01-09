@@ -26,7 +26,7 @@ public class SmoothTrailRendererCollider : MonoBehaviour {
 		tail[tail.Count-1].transform.localScale = new Vector3(0.05F,2.5F,5F);
 		tail[tail.Count-1].transform.rotation = transform.rotation;
 		Vector3 tmp;
-		if (!transform.position.Equals(lastPos1)) {
+		if (!transform.position.Equals(lastPos1) || tail.Count < 10) {
 			tail [tail.Count - 1].transform.position = transform.position - (transform.forward * 5);
 			tmp = transform.position;
 		} 
@@ -34,7 +34,6 @@ public class SmoothTrailRendererCollider : MonoBehaviour {
 			tmp = transform.position + (lastPos1 - lastPos2);
 			tail [tail.Count - 1].transform.position = tmp - (transform.forward * 5);
 		}
-		Debug.Log (transform.position + "     " + transform.rotation+ "     " + transform.forward+ "     " + lastPos1+ "     " + lastPos2);
 		tail[tail.Count-1].renderer.enabled = false;
 		lastPos2 = lastPos1;
 		lastPos1 = tmp;
