@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: EnnemyTexture
+  m_Name: EnemyTexture
   m_Shader: {fileID: 4800000, guid: 7c8efa7a402e375489d9faef57b86cd2, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
