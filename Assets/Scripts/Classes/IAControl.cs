@@ -80,8 +80,8 @@ namespace AssemblyCSharp
 		public void UpdateDecision() {
 			goRight = generalGoRight;
 			goLeft = generalGoLeft;
-			speedUp = !isTooFast;
-			slowDown = false;
+			speedUp = isTooFast;
+			slowDown = true;
 
 			fwd = gameObject.transform.TransformDirection (Vector3.forward);
 			right = gameObject.transform.TransformDirection (Vector3.right);
