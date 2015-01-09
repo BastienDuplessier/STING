@@ -759,7 +759,7 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 9780ac24efe23e0429b129a1e6a8a226, type: 2}
+  - {fileID: 2100000, guid: c0112e5f4f227334e9b748ab5ff433ec, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1261,7 +1261,7 @@ TrailRenderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 9780ac24efe23e0429b129a1e6a8a226, type: 2}
+  - {fileID: 2100000, guid: c0112e5f4f227334e9b748ab5ff433ec, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -1270,8 +1270,8 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Time: Infinity
-  m_StartWidth: 3
-  m_EndWidth: 3
+  m_StartWidth: 5
+  m_EndWidth: 5
   m_Colors:
     m_Color[0]:
       serializedVersion: 2
