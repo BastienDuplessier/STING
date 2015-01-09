@@ -5,7 +5,7 @@ public class PlayerMovement : Movement {
 	
 	// Field of view
 	protected float baseFoV = 60F;
-	protected float maxFoV = 130F;
+	protected float maxFoV = 100F;
 	// Sight reducers
 	private SightReducer hideLeft;
 	private GameObject hideRight;
@@ -32,5 +32,9 @@ public class PlayerMovement : Movement {
 	private void UpdateSightReducing() {
 		float rate = (this.speed - this.minSpeed) / this.const_a;
 		this.hideLeft.UpdateHiding (rate);
+	}
+
+	void OnDestroy() {
+		Application.LoadLevel ("title_scene");
 	}
 }

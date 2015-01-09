@@ -4,8 +4,8 @@ using System.Collections;
 public class SightReducer : MonoBehaviour {
 
 	private RectTransform rTransform;
-	private float baseScaleX = 2F;
-	private float minScaleX = 0.08F;
+	private float baseScaleX = 0.5F;
+	private float minScaleX = 0.12F;
 	private float rangeX;
 	
 	// Use this for initialization
@@ -17,5 +17,13 @@ public class SightReducer : MonoBehaviour {
 	public void UpdateHiding(float rate) {
 		float newScaleX = this.baseScaleX - (rate * this.rangeX);
 		rTransform.localScale = new Vector3 (newScaleX, 1F, 1F);
+	}
+	
+	public void ShowSight() {
+		gameObject.SetActive (true);
+	}
+
+	public void HideSight() {
+		gameObject.SetActive (false);
 	}
 }
